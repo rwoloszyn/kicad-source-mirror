@@ -2,7 +2,7 @@
 language: cpp
 # Compiler selection
 compiler:
-  - clang
+  #- clang
   - gcc
 addons:
   apt:
@@ -12,11 +12,10 @@ addons:
     - llvm-toolchain-precise-3.6
     packages:
     # install toolchains
-    - swig3.0
+    #- swig3.0
     - libglm-dev
-    - libboost-context-dev
+    #- libboost-context-dev
     - libcairo2-dev
-    - libglm-dev
 before-script:
   - mkdir -p build/release
   - cd build/release
