@@ -1,0 +1,32 @@
+# Enable C++ support
+language: cpp
+# Compiler selection
+compiler:
+  - clang
+  - gcc
+addons:
+  apt:
+    sources:
+    # add PPAs with more up-to-date toolchains
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.6
+    packages:
+    # install toolchains
+    - swig3.0
+    - libglm-dev
+    - libboost-context-dev
+    - libcairo2-dev
+    - libglm-dev
+before-script:
+  - mkdir -p build/release
+  - cd build/release
+# Build steps
+script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_BUILD_TYPE=Release \
+      -DKICAD_SCRIPTING=ON \
+      -DKICAD_SCRIPTING_MODULES=ON \
+      -DKICAD_SCRIPTING_WXPYTHON=OFF \
+      ../../
+  - make
