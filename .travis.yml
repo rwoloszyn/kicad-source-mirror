@@ -19,6 +19,9 @@ addons:
     - libglm-dev
     #- libboost-context-dev
     - libcairo2-dev
+    - wx2.8-headers
+    - libwxgtk2.8-0
+    - libwxgtk2.8-dev
 before-script:
   - mkdir -p build/release
   - cd build/release
