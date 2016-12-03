@@ -5,20 +5,20 @@ compiler:
   - clang
   - gcc
   
-before_install:
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - sudo apt-get update -q
-  - sudo apt-get libwxbase3.0-0-unofficial \
-                 libwxbase3.0-dev \
-                 libwxgtk3.0-0-unofficial \
-                 libwxgtk3.0-dev \
-                 wx3.0-headers \
-                 wx-common \
-                 libwxbase3.0-dbg \
-                 libwxgtk3.0-dbg \
-                 wx3.0-i18n \
-                 wx3.0-examples \
-                 wx3.0-doc -y
+#before_install:
+#  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+#  - sudo apt-get update -q
+#  - sudo apt-get libwxbase3.0-0-unofficial \
+#                 libwxbase3.0-dev \
+#                 libwxgtk3.0-0-unofficial \
+#                 libwxgtk3.0-dev \
+#                 wx3.0-headers \
+#                 wx-common \
+#                 libwxbase3.0-dbg \
+#                 libwxgtk3.0-dbg \
+#                 wx3.0-i18n \
+#                 wx3.0-examples \
+#                 wx3.0-doc
 addons:
   apt:
     sources:
@@ -26,6 +26,7 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-precise-3.6
     - george-edison55-precise-backports # cmake 3.2.3 / doxygen 1.8.3
+    #- sourceline('ppa:ubuntu-toolchain-r/test')
     packages:
     - cmake
     - cmake-data
@@ -34,6 +35,17 @@ addons:
     - libglm-dev
     #- libboost-context-dev
     - libcairo2-dev
+    - libwxbase3.0-0-unofficial
+    - libwxbase3.0-dev
+    - libwxgtk3.0-0-unofficial
+    - libwxgtk3.0-dev
+    - wx3.0-headers
+    - wx-common
+    - libwxbase3.0-dbg
+    - libwxgtk3.0-dbg
+    - wx3.0-i18n
+    - wx3.0-examples
+    - wx3.0-doc
 before-script:
   - mkdir -p build/release
   - cd build/release
