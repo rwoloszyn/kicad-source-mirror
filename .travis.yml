@@ -2,7 +2,7 @@
 language: cpp
 # Compiler selection
 compiler:
-  #- clang
+  - clang
   - gcc
   
 before_install:
@@ -18,7 +18,7 @@ before_install:
                  libwxgtk3.0-dbg \
                  wx3.0-i18n \
                  wx3.0-examples \
-                 wx3.0-doc -y  
+                 wx3.0-doc -y
 addons:
   apt:
     sources:
