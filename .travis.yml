@@ -35,9 +35,9 @@ addons:
     - libglm-dev
     #- libboost-context-dev
     - libcairo2-dev
-    - libwxbase3.0-0-unofficial
+    - libwxbase3.0-0
     - libwxbase3.0-dev
-    - libwxgtk3.0-0-unofficial
+    - libwxgtk3.0-0
     - libwxgtk3.0-dev
     - wx3.0-headers
     - wx-common
