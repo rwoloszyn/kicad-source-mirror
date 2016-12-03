@@ -74,7 +74,14 @@ public:
     void SetStyle( GRAPHIC_PINSHAPE style ) { m_choiceStyle->SetSelection( style ); }
     GRAPHIC_PINSHAPE GetStyle( void ) { return m_choiceStyle->GetPinShapeSelection(); }
 
-    void SetPinName( const wxString& name ) { m_textPinName->SetValue( name ); }
+    void SetPinName( const wxString& name )
+    {
+        m_textPinName->SetValue( name );
+        //TODO: Add settings for such a behaviour
+        m_textPinName->SelectAll();
+        m_textPinName->SetInsertionPoint(m_textPinName->GetLastPosition());
+    }
+
     wxString GetPinName( void ) { return m_textPinName->GetValue(); }
 
     void SetPinNameTextSize( const wxString& size )
