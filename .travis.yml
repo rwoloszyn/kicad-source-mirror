@@ -21,8 +21,6 @@ before-script:
   - cd build/release
 # Build steps
 script:
-  - mkdir build
-  - cd build
   - cmake -DCMAKE_BUILD_TYPE=Release \
       -DKICAD_SCRIPTING=ON \
       -DKICAD_SCRIPTING_MODULES=ON \
