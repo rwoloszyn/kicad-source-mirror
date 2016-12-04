@@ -68,6 +68,10 @@ static int     LastPinLength        = -1;
 static int     LastPinNameSize      = -1;
 static int     LastPinNumSize       = -1;
 
+static wxString LastPinName = "";
+static wxString LastPinNumber = "1";
+
+
 static int GetLastPinLength()
 {
     if( LastPinLength == -1 )
@@ -170,11 +174,13 @@ void LIB_EDIT_FRAME::OnEditPin( wxCommandEvent& event )
     LastPinCommonConvert = dlg.GetAddToAllBodyStyles();
     LastPinCommonUnit = dlg.GetAddToAllParts();
     LastPinVisible = dlg.GetVisible();
+    LastPinName = dlg.GetPinName();
+    LastPinNumber = dlg.GetPadName();
 
     pin->EnableEditMode( true, m_editPinsPerPartOrConvert );
-    pin->SetName( dlg.GetPinName() );
+    pin->SetName( LastPinName );
     pin->SetNameTextSize( GetLastPinNameSize() );
-    pin->SetNumber( dlg.GetPadName() );
+    pin->SetNumber( LastPinNumber );
     pin->SetNumberTextSize( GetLastPinNumSize() );
     pin->SetOrientation( LastPinOrient );
     pin->SetLength( GetLastPinLength() );
@@ -452,6 +458,12 @@ void LIB_EDIT_FRAME::CreatePin( wxDC* DC )
     pin->SetConvert( LastPinCommonConvert ? 0 : m_convert );
     pin->SetUnit( LastPinCommonUnit ? 0 : m_unit );
     pin->SetVisible( LastPinVisible );
+    //TODO Add settings for dooing that
+    int newPinNum = ValueFromString( g_UserUnit, LastPinNumber);
+    wxString newPinStr = StringFromValue(g_UserUnit, newPinNum++, false);
+    pin->SetNumber( newPinStr );
+
+    pin->SetName( LastPinName );
     PinPreviousPos = pin->GetPosition();
     m_canvas->SetIgnoreMouseEvents( true );
     wxCommandEvent cmd( wxEVT_COMMAND_MENU_SELECTED );
